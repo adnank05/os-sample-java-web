@@ -1,7 +1,7 @@
 pipeline
 {
 
-agent any
+agent none
 
     tools
     {
@@ -12,7 +12,8 @@ agent any
     stages
     {   
         stage('Initializing Tools')
-        {
+        { 
+            agent any
               steps
                 {
                     sh '''
@@ -23,11 +24,14 @@ agent any
         }
         stage('Build')
         {
+            agent{
+                    label 'master'
+                }
             steps
             {
                 echo "compiling code"
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'mvn clean compile';
+                sh 'mvn clean install';
             }
         }
 
