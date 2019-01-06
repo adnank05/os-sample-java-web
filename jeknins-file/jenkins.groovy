@@ -20,6 +20,7 @@ agent none
                         echo "PATH = ${PATH}"
                         echo "M2_HOME = ${M2_HOME}"
                     '''
+                    echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} on agent ${env.NODE_NAME}"
                 }
         }
         stage('Build')
@@ -30,7 +31,7 @@ agent none
             steps
             {
                 echo "compiling code"
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL} on agent ${env.NODE_NAME}"
                 sh 'mvn clean install';
             }
         }
