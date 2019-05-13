@@ -51,7 +51,7 @@ pipeline
             }*/
 
             steps{
-                sh 'mvn clean deploy'
+                sh 'mvn clean deploy -s /opt/tools/maven/maven-3.6.1/conf/settings.xml'
             }
         }
 
