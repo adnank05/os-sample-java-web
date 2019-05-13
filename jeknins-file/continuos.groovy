@@ -42,12 +42,16 @@ pipeline
         
         stage('Push war to nexus')
         {
-            boolean packageGeneration=true
+           /* boolean packageGeneration=true
             steps{
             try
             {
                 sh 'mvn clean deploy'
             } catch(Exception e){packageGeneration=false}
+            }*/
+
+            steps{
+                sh 'mvn clean deploy'
             }
         }
 
