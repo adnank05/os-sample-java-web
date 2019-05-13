@@ -42,10 +42,12 @@ pipeline
         boolean packageGeneration=true
         stage('Push war to nexus')
         {
+            steps{
             try
             {
                 sh 'mvn clean deploy'
             } catch(Exception e){packageGeneration=false}
+            }
         }
 
        /* stage('Docker Build')
